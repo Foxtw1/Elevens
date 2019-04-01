@@ -9,5 +9,17 @@ public class CardTester {
 	 */
 	public static void main(String[] args) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
+		Card card1 = new Card("Queen", "Hearts", 12);
+		Card card2 = new Card("Queen", "Hearts", 12);
+		Card card3 = new Card("Joker", "Hearts", 14);
+
+		System.out.println(card1.rank());
+		System.out.println(card2.suit());
+		System.out.println(card3.pointValue());
+
+		System.out.println(card1.matches(card2));
+		System.out.println(card1.toString());
+
+
 	}
 }
