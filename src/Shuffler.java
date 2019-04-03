@@ -1,6 +1,7 @@
 /**
  * This class provides a convenient way to test shuffling methods.
  */
+
 public class Shuffler {
 
 	/**
@@ -17,7 +18,7 @@ public class Shuffler {
 	public static void main(String[] args) {
 		System.out.println("Results of " + SHUFFLE_COUNT +
 								 " consecutive perfect shuffles:");
-		int[] values1 = {0, 1, 2, 3};
+		int[] values1 = {0, 1, 2, 3, 4,5,6,7,8,9};
 		for (int j = 1; j <= SHUFFLE_COUNT; j++) {
 			perfectShuffle(values1);
 			System.out.print("  " + j + ":");
@@ -30,7 +31,7 @@ public class Shuffler {
 
 		System.out.println("Results of " + SHUFFLE_COUNT +
 								 " consecutive efficient selection shuffles:");
-		int[] values2 = {0, 1, 2, 3};
+		int[] values2 = {0, 1, 2, 3,4,5,6,7,8,9};
 		for (int j = 1; j <= SHUFFLE_COUNT; j++) {
 			selectionShuffle(values2);
 			System.out.print("  " + j + ":");
@@ -51,6 +52,23 @@ public class Shuffler {
 	 */
 	public static void perfectShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		int[] shuffledDeck = new int[values.length];
+
+		int k = 0;
+		for(int i = 0; i < values.length / 2; i++){
+			shuffledDeck[k] = values[i];
+			k = k + 2;
+		}
+		k = 1;
+		for(int i = values.length / 2; i < values.length; i++){
+			shuffledDeck[k] = values[i];
+			k = k + 2;
+		}
+
+		for(int i = 0; i < shuffledDeck.length; i++){
+			values[i] = shuffledDeck[i];
+		}
+
 	}
 
 	/**
@@ -66,5 +84,14 @@ public class Shuffler {
 	 */
 	public static void selectionShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		// int[] shuffled = new int[values.length];
+		for(int k = values.length - 1; k >= 0; k--){
+			int rand = (int)(Math.random() * values.length);
+			// System.out.println("rand " + rand);
+			int store = values[k];
+			values[k] = values[rand];
+			values[rand] = store;
+		}
+
 	}
 }
