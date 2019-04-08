@@ -122,7 +122,7 @@ public class Deck {
             Card store2 = cards.get(rand);
 
             cards.add(k, store2);
-            cards.add(rand,store1);
+            cards.add(rand, store1);
 
 
         }
