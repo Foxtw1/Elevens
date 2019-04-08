@@ -118,7 +118,6 @@ public class Deck {
         System.out.println(size);
         for(int k = size - 1; k >= 0; k--){
             int rand = (int)(Math.random() * (cards.size() - 1));
-            // System.out.println("rand " + rand);
             Card store1 = cards.get(k);
             Card store2 = cards.get(rand);
 
