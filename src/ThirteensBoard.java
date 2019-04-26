@@ -15,7 +15,7 @@ public class ThirteensBoard extends Board {
 	 * The ranks of the cards for this game to be sent to the deck.
 	 */
 	private static final String[] RANKS =
-		{"ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen"};
+		{"ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"};
 
 	/**
 	 * The suits of the cards for this game to be sent to the deck.
@@ -27,7 +27,7 @@ public class ThirteensBoard extends Board {
 	 * The values of the cards for this game to be sent to the deck.
 	 */
 	private static final int[] POINT_VALUES =
-		{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+		{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
 
 	/**
 	 * Flag used to control debugging print statements.
@@ -58,7 +58,7 @@ public class ThirteensBoard extends Board {
 
 			return true;
 		}
-		else if(containsJQK(selectedCards)){
+		else if(containsK(selectedCards)){
 
 			return true;
 		}
@@ -79,7 +79,7 @@ public class ThirteensBoard extends Board {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
 		List<Integer> cIndexes = cardIndexes();
 
-		if(containsPairSum13(cIndexes) == true){
+		if(containsPairSum13(cIndexes) || containsK(cIndexes)){
 			return true;
 		}
 		return false;
@@ -120,26 +120,17 @@ public class ThirteensBoard extends Board {
 	 * @return true if the board entries in selectedCards
 	 *              include a jack, a queen, and a king; false otherwise.
 	 */
-	private boolean containsJQK(List<Integer> selectedCards) {
+	private boolean containsK(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
 
-
-		boolean foundJack = false;
-		boolean foundQueen = false;
 		boolean foundKing = false;
 		for(Integer cObj : selectedCards) {
 		 	int k = cObj.intValue();
-			if(cardAt(k).rank().equals("jack")) {
-				foundJack = true;
-			}
-			else if(cardAt(k).rank().equals("queen")) {
-				foundQueen = true;
-			}
-			else if(cardAt(k).rank().equals("king")) {
+			if(cardAt(k).rank().equals("king")) {
 				foundKing = true;
 			}
 		}
-		return foundJack && foundQueen && foundKing;
+		return foundKing;
 
 	}
 }
