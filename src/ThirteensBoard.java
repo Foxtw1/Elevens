@@ -4,7 +4,7 @@ import java.util.ArrayList;
 /**
  * The ElevensBoard class represents the board in a game of Elevens.
  */
-public class ElevensBoard extends Board {
+public class ThirteensBoard extends Board {
 
 	/**
 	 * The size (number of cards) on the board.
@@ -15,7 +15,7 @@ public class ElevensBoard extends Board {
 	 * The ranks of the cards for this game to be sent to the deck.
 	 */
 	private static final String[] RANKS =
-		{"ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"};
+		{"ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen"};
 
 	/**
 	 * The suits of the cards for this game to be sent to the deck.
@@ -27,7 +27,7 @@ public class ElevensBoard extends Board {
 	 * The values of the cards for this game to be sent to the deck.
 	 */
 	private static final int[] POINT_VALUES =
-		{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, 0, 0};
+		{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
 
 	/**
 	 * Flag used to control debugging print statements.
@@ -38,7 +38,7 @@ public class ElevensBoard extends Board {
 	/**
 	 * Creates a new <code>ElevensBoard</code> instance.
 	 */
-	 public ElevensBoard() {
+	 public ThirteensBoard() {
 	 	super(BOARD_SIZE, RANKS, SUITS, POINT_VALUES);
 	 }
 
@@ -54,7 +54,7 @@ public class ElevensBoard extends Board {
 	@Override
 	public boolean isLegal(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
-		if(containsPairSum11(selectedCards)){
+		if(containsPairSum13(selectedCards)){
 
 			return true;
 		}
@@ -79,7 +79,7 @@ public class ElevensBoard extends Board {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
 		List<Integer> cIndexes = cardIndexes();
 
-		if(containsPairSum11(cIndexes) == true || containsJQK(cIndexes) == true){
+		if(containsPairSum13(cIndexes) == true){
 			return true;
 		}
 		return false;
@@ -91,9 +91,9 @@ public class ElevensBoard extends Board {
 	 *                      of indexes into this board that are searched
 	 *                      to find an 11-pair.
 	 * @return true if the board entries in selectedCards
-	 *              contain an 11-pair; false otherwise.
+	 *              contain an 13-pair; false otherwise.
 	 */
-	private boolean containsPairSum11(List<Integer> selectedCards) {
+	private boolean containsPairSum13(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
 
 
@@ -101,7 +101,7 @@ public class ElevensBoard extends Board {
 			int c1 = selectedCards.get(i).intValue();
 			for (int n = i + 1; n < selectedCards.size(); n++) {
 				int c2 = selectedCards.get(n).intValue();
-				if (cardAt(c1).pointValue() + cardAt(c2).pointValue() == 11) {
+				if (cardAt(c1).pointValue() + cardAt(c2).pointValue() == 13) {
 					return true;
 				}
 			}
@@ -122,6 +122,7 @@ public class ElevensBoard extends Board {
 	 */
 	private boolean containsJQK(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+
 
 		boolean foundJack = false;
 		boolean foundQueen = false;

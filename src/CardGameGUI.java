@@ -136,7 +136,8 @@ public class CardGameGUI extends JFrame implements ActionListener {
 				ImageIcon icon = new ImageIcon(imageURL);
 				displayCards[k].setIcon(icon);
 				displayCards[k].setVisible(true);
-			} else {
+			} 
+			else {
 				throw new RuntimeException(
 					"Card image not found: \"" + cardImageFileName + "\"");
 			}

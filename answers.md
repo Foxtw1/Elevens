@@ -1,0 +1,3 @@
+1.  Because if it were the same it would be an abstract method.
+2.  Because the selected cards are specific to the game, not the board.
+3.  ElevensBoard would be abe to call the two functions, but it could only call them if you make the functions non-abstract, and put them in the ElevensBoard code. The design would not work as well as the abtract method because the code needs abstract and nonabstract methods to work.
